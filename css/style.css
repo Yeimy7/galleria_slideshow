@@ -13,6 +13,12 @@
     font-family: 'Libre Baskerville', serif;
     font-size: 18px;
 }
+.container{
+    width: 100vw;
+    min-height: 100%;
+    /* height: auto; */
+    border: 1px solid green;
+}
 
 .header {
     width: 93vw;
@@ -200,7 +206,17 @@ a {
 }
 
 /* ------------------- CSS Info.html -------------------*/
-
+/* .modal{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 5;
+} */
 .slide {
     width: 100vw;
     height: auto;
@@ -218,11 +234,39 @@ a {
 
 .slide-galery-picture {
     position: relative;
-    background-image: url('../assets/starry-night/hero-large.jpg');
+    /* background-image: url('../assets/starry-night/hero-large.jpg'); */
+    background-color: var(--lightGray);
     background-position: center;
     background-size: cover;
     width: 58%;
     height: 92%;
+}
+.view-picture{
+    background-color: var(--black);
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 150px;
+    height: 40px;
+    bottom: 35px;
+    left: 35px;
+    z-index: 3;
+    cursor: pointer;
+}
+.view-picture span{
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: .5rem;
+    letter-spacing: 2px;
+}
+.view{
+    display: inline-block;
+    background-image: url('../assets/shared/icon-view-image.svg');
+    background-position: center;
+    background-size: cover;
+    width: 15px;
+    height: 15px;
 }
 
 .slide-galery-card {
@@ -247,7 +291,8 @@ a {
 }
 
 .slide-galery-autor {
-    background-image: url('../assets/starry-night/artist.jpg');
+    /* background-image: url('../assets/starry-night/artist.jpg'); */
+    background-color: var(--lightGray);
     background-position: center;
     background-size: cover;
     width: 135px;
@@ -353,4 +398,6 @@ a {
 }
 .footer-title{
     width: auto;
+    font-size: 1rem;
+    font-weight: 600;
 }

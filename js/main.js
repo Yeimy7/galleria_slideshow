@@ -10,6 +10,8 @@ window.addEventListener('load', () => {
     const footer_title = document.getElementById('footer-title');
     const footer_autor = document.getElementById('footer-autor');
     const progress = document.getElementById('progress');
+    const next = document.getElementById('next');
+    const back = document.getElementById('back');
 
     let dataPicture = {}
     dataPicture.hero;
@@ -19,6 +21,8 @@ window.addEventListener('load', () => {
     dataPicture.year;
     dataPicture.desc;
     dataPicture.go;
+
+    let valor = 1;
 
     var url = window.location.href;
     url = unescape(url);
@@ -31,29 +35,39 @@ window.addEventListener('load', () => {
             var pos_separador = url.indexOf("&", variable_pos);
 
             if (pos_separador != -1) {
-                return url.substring(variable_pos + variable_may.length + 1, pos_separador);
+                return parseInt(url.substring(variable_pos + variable_may.length + 1, pos_separador));
             } else {
-                return url.substring(variable_pos + variable_may.length + 1, url.length);
+                return parseInt(url.substring(variable_pos + variable_may.length + 1, url.length));
             }
         } else {
-            return "NO_ENCONTRADO";
+            return -1;
         }
     }
-    var valor = obtener_valor("verinfo");
-    if (valor !== 'NO_ENCONTRADO') {
-        fetch('http://localhost:5500/db/data.json')
-            .then(response => response.json())
-            .then(data => {
-                dataPicture.hero = data[valor].images.hero.large;
-                dataPicture.title = data[valor].name;
-                dataPicture.autor = data[valor].artist.name;
-                dataPicture.imageAutor = data[valor].artist.image;
-                dataPicture.year = data[valor].year;
-                dataPicture.desc = data[valor].description;
-                dataPicture.go = data[valor].source;
-                drawData();
-            })
+    valor = obtener_valor("verinfo");
+
+    buscar(valor);
+
+    function buscar(valor) {
+        if (valor >= 0) {
+            fetch('http://localhost:5500/db/data.json')
+                .then(response => response.json())
+                .then(data => {
+                    dataPicture.hero = data[valor].images.hero.large;
+                    dataPicture.title = data[valor].name;
+                    dataPicture.autor = data[valor].artist.name;
+                    dataPicture.imageAutor = data[valor].artist.image;
+                    dataPicture.year = data[valor].year;
+                    dataPicture.desc = data[valor].description;
+                    dataPicture.go = data[valor].source;
+                    drawData();
+                })
+                .catch(e => {
+                    console.log(e)
+                })
+        }
     }
+
+
 
     function drawData() {
         hero.style.backgroundImage = `url('${dataPicture.hero}')`;
@@ -68,5 +82,18 @@ window.addEventListener('load', () => {
         progress.value = 6.6 * (valor + 1);
 
     }
+
+    next.addEventListener('click', () => {
+        if (valor < 14) {
+            next.href = `./info.html?verinfo=${valor + 1}`;
+            buscar(valor);
+        }
+    })
+    back.addEventListener('click', () => {
+        if (valor > 0) {
+            back.href = `./info.html?verinfo=${valor - 1}`;
+            buscar(valor);
+        }
+    })
 
 });
