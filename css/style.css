@@ -199,7 +199,7 @@ a {
     font-size: .7rem;
 }
 
-/* CSS Info.html*/
+/* ------------------- CSS Info.html -------------------*/
 
 .slide {
     width: 100vw;
@@ -232,7 +232,7 @@ a {
     background-color: white;
     top: 0;
     right: 0;
-    padding: 0 50px 50px;
+    padding: 0 0 50px 50px;
 }
 
 .slide-title {
@@ -350,4 +350,7 @@ a {
 .button:hover svg {
     stroke: var(--darkGray);
 
+}
+.footer-title{
+    width: auto;
 }

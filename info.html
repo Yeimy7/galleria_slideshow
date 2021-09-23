@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/main.js"></script>
     <title>Card</title>
   </head>
   <body>
@@ -17,16 +18,16 @@
       </header>
       <section class="slide">
         <div class="slide-galery">
-          <div class="slide-galery-picture"></div>
+          <div class="slide-galery-picture" id="hero-image"></div>
           <div class="slide-galery-card">
-            <h1 class="slide-title">Starry Night</h1>
-            <p class="slide-autor">Vincent Van Gogh</p>
+            <h1 class="slide-title" id="hero-title">Starry Night</h1>
+            <p class="slide-autor" id="hero-autor">Vincent Van Gogh</p>
           </div>
-          <div class="slide-galery-autor"></div>
+          <div class="slide-galery-autor" id="image-autor"></div>
         </div>
         <div class="slide-info">
-          <span class="year">1889</span>
-          <p class="description">
+          <span class="year" id="year">1889</span>
+          <p class="description" id="description">
             Although The Starry Night was painted during the day in Van Gogh's
             ground-floor studio, it would be inaccurate to state that the
             picture was painted from memory. The view has been identified as the
@@ -37,7 +38,7 @@
             wheat ... above which, in the morning, I watch the sun rise in all
             its glory."
           </p>
-          <a class="go-source start" href="#">go to source</a>
+          <a class="go-source start" id="go-source" href="" target="_blank" >go to source</a>
         </div>
       </section>
       <footer class="footer">
@@ -46,8 +47,8 @@
         </progress>
         <div class="footer-info">
           <p>
-            <span class="post-title">Starry Night</span>
-            <span class="post-autor">Vincent Van Gogh</span>
+            <span class="post-title footer-title" id="footer-title">Starry Night</span>
+            <span class="post-autor" id="footer-autor">Vincent Van Gogh</span>
           </p>
           <div class="buttons">
             <div class="button button-back">
