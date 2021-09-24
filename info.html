@@ -9,8 +9,10 @@
     <title>Card</title>
   </head>
   <body>
-    <div class="modal">
-      <div class="modal-picture"></div>
+    <div class="modal" id="modal" data-animation="slideInOutLeft">
+      <div class="modal-picture" id="modal-picture">
+        <div class="close" id="close">close</div>
+      </div>
     </div>
     <div class="container">
       <header class="header">
@@ -19,7 +21,7 @@
         </div>
         <a class="start" href="./index.html">stop slideshow</a>
       </header>
-      <section class="slide">
+      <section class="slide" id="slide" style="display: none">
         <div class="slide-galery">
           <div class="slide-galery-picture" id="hero-image">
             <div class="view-picture" id="view-picture">

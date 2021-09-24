@@ -12,12 +12,12 @@
     --black: hsl(0, 0%, 0%);
     font-family: 'Libre Baskerville', serif;
     font-size: 18px;
+    --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
 }
-.container{
+
+.container {
     width: 100vw;
     min-height: 100%;
-    /* height: auto; */
-    border: 1px solid green;
 }
 
 .header {
@@ -206,17 +206,68 @@ a {
 }
 
 /* ------------------- CSS Info.html -------------------*/
-/* .modal{
+
+.modal {
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 5;
-} */
+    transition: all 0.35s ease-in;
+    visibility: hidden;
+}
+.modal.is-visible {
+    visibility: visible;
+    opacity: 1;
+  }
+.close{
+    text-transform: uppercase;
+    color: var(--white);
+    text-align: end;
+    margin-top: -40px;
+    cursor: pointer;
+}
+.close:hover{
+    color: var(--lightGray);
+}
+.modal-picture{
+    min-width: 40vw;
+    min-height: 80vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+[data-animation="slideInOutLeft"] .modal-picture {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.5s var(--bounceEasing);
+}
+
+[data-animation="slideInOutLeft"].is-visible .modal-picture {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.2s;
+}
+[data-animation="slideInOutRight"] .slide {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s var(--bounceEasing);
+}
+
+[data-animation="slideInOutRight"].is-visible .slide {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.2s;
+}
+
 .slide {
     width: 100vw;
     height: auto;
@@ -241,7 +292,8 @@ a {
     width: 58%;
     height: 92%;
 }
-.view-picture{
+
+.view-picture {
     background-color: var(--black);
     position: absolute;
     display: flex;
@@ -254,13 +306,18 @@ a {
     z-index: 3;
     cursor: pointer;
 }
-.view-picture span{
+.view-picture:hover{
+    background-color:rgba(125, 125, 125,0.6) ;
+}
+
+.view-picture span {
     color: var(--white);
     text-transform: uppercase;
     font-size: .5rem;
     letter-spacing: 2px;
 }
-.view{
+
+.view {
     display: inline-block;
     background-image: url('../assets/shared/icon-view-image.svg');
     background-position: center;
@@ -387,6 +444,7 @@ a {
     height: 100%;
     cursor: pointer;
 }
+
 .button svg {
     stroke: var(--black);
     transition: stroke .3s ease;
@@ -394,9 +452,9 @@ a {
 
 .button:hover svg {
     stroke: var(--darkGray);
-
 }
-.footer-title{
+
+.footer-title {
     width: auto;
     font-size: 1rem;
     font-weight: 600;

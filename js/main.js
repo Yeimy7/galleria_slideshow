@@ -13,8 +13,17 @@ window.addEventListener('load', () => {
     const next = document.getElementById('next');
     const back = document.getElementById('back');
 
+    const view = document.getElementById('view-picture');
+    const modal = document.getElementById('modal');
+    const modal_picture = document.getElementById('modal-picture');
+    const close = document.getElementById('close');
+    const slide = document.getElementById('slide');
+    const gallery = document.getElementById('gallery');
+
+
     let dataPicture = {}
     dataPicture.hero;
+    dataPicture.gallery;
     dataPicture.title;
     dataPicture.autor;
     dataPicture.imageAutor;
@@ -40,6 +49,7 @@ window.addEventListener('load', () => {
                 return parseInt(url.substring(variable_pos + variable_may.length + 1, url.length));
             }
         } else {
+            fadeIn(gallery);
             return -1;
         }
     }
@@ -53,6 +63,7 @@ window.addEventListener('load', () => {
                 .then(response => response.json())
                 .then(data => {
                     dataPicture.hero = data[valor].images.hero.large;
+                    dataPicture.gallery = data[valor].images.gallery;
                     dataPicture.title = data[valor].name;
                     dataPicture.autor = data[valor].artist.name;
                     dataPicture.imageAutor = data[valor].artist.image;
@@ -65,6 +76,7 @@ window.addEventListener('load', () => {
                     console.log(e)
                 })
         }
+
     }
 
 
@@ -80,9 +92,29 @@ window.addEventListener('load', () => {
         footer_title.innerHTML = dataPicture.title;
         footer_autor.innerHTML = dataPicture.autor;
         progress.value = 6.6 * (valor + 1);
+        view.addEventListener('click', () => {
+            modal.classList.toggle('is-visible');
+            modal_picture.style.backgroundImage = `url('${dataPicture.gallery}')`;
+        });
+        close.addEventListener('click', () => {
+            modal.classList.toggle('is-visible');
+        })
 
     }
-
+    function fadeIn(element, duration = 800) {
+        element.style.display = '';
+        element.style.opacity = 0;
+        var last = +new Date();
+        var tick = function () {
+            element.style.opacity = +element.style.opacity + (new Date() - last) / duration;
+            last = +new Date();
+            if (+element.style.opacity < 1) {
+                (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+            }
+        };
+        tick();
+    }
+    fadeIn(slide);
     next.addEventListener('click', () => {
         if (valor < 14) {
             next.href = `./info.html?verinfo=${valor + 1}`;
