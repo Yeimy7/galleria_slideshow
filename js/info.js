@@ -82,10 +82,10 @@ window.addEventListener('load', () => {
 
 
     function drawData() {
-        hero.style.backgroundImage = `url('${dataPicture.hero}')`;
+        hero.style.backgroundImage = `url('./${dataPicture.hero}')`;
         hero_title.innerHTML = dataPicture.title;
         hero_autor.innerHTML = dataPicture.autor;
-        autor.style.backgroundImage = `url('${dataPicture.imageAutor}')`;
+        autor.style.backgroundImage = `url('./${dataPicture.imageAutor}')`;
         year.innerHTML = dataPicture.year;
         description.innerHTML = dataPicture.desc;
         go_source.href = dataPicture.go;
@@ -94,7 +94,7 @@ window.addEventListener('load', () => {
         progress.value = 6.6 * (valor + 1);
         view.addEventListener('click', () => {
             modal.classList.toggle('is-visible');
-            modal_picture.style.backgroundImage = `url('${dataPicture.gallery}')`;
+            modal_picture.style.backgroundImage = `url(./'${dataPicture.gallery}')`;
         });
         close.addEventListener('click', () => {
             modal.classList.toggle('is-visible');
