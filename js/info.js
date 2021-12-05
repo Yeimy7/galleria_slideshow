@@ -59,7 +59,7 @@ window.addEventListener('load', () => {
 
     function buscar(valor) {
         if (valor >= 0) {
-            fetch('https://github.com/Yeimy7/galleria_slideshow/blob/main/db/data.json')
+            fetch('https://yeimy7.github.io/galleria_slideshow/db/data.json')
                 .then(response => response.json())
                 .then(data => {
                     dataPicture.hero = data[valor].images.hero.large;
