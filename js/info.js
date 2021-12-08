@@ -94,7 +94,7 @@ window.addEventListener('load', () => {
         progress.value = 6.6 * (valor + 1);
         view.addEventListener('click', () => {
             modal.classList.toggle('is-visible');
-            modal_picture.style.backgroundImage = `url(./'${dataPicture.gallery}')`;
+            modal_picture.style.backgroundImage = `url('./${dataPicture.gallery}')`;
         });
         close.addEventListener('click', () => {
             modal.classList.toggle('is-visible');
